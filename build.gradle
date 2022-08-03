@@ -1,0 +1,44 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    ext {
+        sdkVersion = 33
+        minSdkVersion = 28
+        versionNumber = 1
+        versionName = "1.0"
+        applicationId = "fairman.aidan.recipe.android"
+        javaVersion = JavaVersion.VERSION_1_8
+
+        androidBuildToolsVersion = "7.0.4"
+        androidMaterialVersion = "1.6.1"
+        androidAppcompatVersion = "1.4.2"
+        androidConstraintLayoutVersion = "2.1.4"
+        androidNavigationVersion = "2.5.1"
+        jUnitVersion = "5.9.0"
+        androidxJunitVersion = '1.1.3'
+        androidxEspressoVersion = '3.4.0'
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$androidBuildToolsVersion"
+    }
+}
+subprojects {
+    apply plugin: 'com.android.application'
+    dependencies {
+        implementation "com.google.android.material:material:$androidMaterialVersion"
+        implementation "androidx.appcompat:appcompat:$androidAppcompatVersion"
+        implementation "androidx.constraintlayout:constraintlayout:$androidConstraintLayoutVersion"
+        implementation "androidx.navigation:navigation-fragment:$androidNavigationVersion"
+        implementation "androidx.navigation:navigation-ui:$androidNavigationVersion"
+        testImplementation "org.junit.jupiter:junit-jupiter-engine:$jUnitVersion"
+        androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+        androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoVersion"
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
